@@ -23,7 +23,7 @@ public class HW2 {
                                                     // == 0 (a=16k)
 
         int second = a % 25;
-        boolean retRes = (prefirst == 0 && second == 0) | (prefirst == 1 && a%25 != 0);   // (0,0) - a = 400k
+        boolean retRes = (prefirst == 0 && second == 0) | (prefirst == 4 && a%25 != 0);   // (0,0) - a = 400k
                                                                                     // (1,x) x!= 0 a = 4k, a!= 100s;
         return  retRes;
     }
