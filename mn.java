@@ -18,6 +18,7 @@ public class mn extends JFrame {
 
     private int pairsNum = 0;
     private NumButton[] Jbs;
+    private ActionListener Checker;
     private void InitNums()
     {
         pairsNum = 0;
@@ -45,35 +46,37 @@ public class mn extends JFrame {
     }
     private void InitChecker()
     {
+        Checker = new ActionListener() {
+            NumButton btn_1;
+            boolean firstPush = true;
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (firstPush == true) {
+                    btn_1 = (NumButton) e.getSource();
+                    firstPush = false;
+                    btn_1.setEnabled(false);
+                }
+                else{
+                    if(btn_1.value == ((NumButton) e.getSource()).value) {
+                        ((NumButton) e.getSource()).setEnabled(false);
+                        pairsNum--;
+                        if(pairsNum <= 0)
+                            System.exit(1);
+                    }
+                    else
+                        btn_1.setEnabled(true);
+
+                    firstPush = true;
+                }
+            }
+        };
         for(int i = 0;i < Jbs.length;i++) {
             int ind_strd = i;
-            Jbs[i].addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    if (firstPush == true) {
-                        ind_1 = ind_strd;
-                        firstPush = false;
-                        Jbs[ind_1].setEnabled(false);
-                    }
-                    else{
-                        if(Jbs[ind_1].value == Jbs[ind_strd].value) {
-                            Jbs[ind_strd].setEnabled(false);
-                            pairsNum--;
-                            if(pairsNum <= 0)
-                                System.exit(1);
-                        }
-                        else
-                            Jbs[ind_1].setEnabled(true);
-
-                        firstPush = true;
-                    }
-                }
-            });
+            Jbs[i].addActionListener(Checker);
         }
     }
 
     public mn(int initialValue) {
-
         setBounds(500, 500, 400, 400);
         setTitle("mn");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
