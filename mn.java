@@ -13,9 +13,6 @@ class NumButton extends JButton{
 }
 
 public class mn extends JFrame {
-    private boolean firstPush = true;
-    private int ind_1, ind_2;
-
     private int pairsNum = 0;
     private NumButton[] Jbs;
     private ActionListener Checker;
