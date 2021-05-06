@@ -23,3 +23,17 @@ public class Employee {
     }
 };
 
+public class Main{
+    public static void main(String[] args) {
+        Employee[] empArr = new Employee[5];
+        empArr[0] = new Employee("Ivanov Ivan", "Engineer", "ivivan@mailbox.com", "892312312", 30000, 30); 
+        empArr[1] = new Employee("Vanov Ivan", "Engineer", "vivan@mailbox.com", "892312310", 30000, 40);
+        empArr[2] = new Employee("Ivanov Van", "Engineer", "ivvan@mailbox.com", "892312311", 30000, 50);
+        empArr[3] = new Employee("Ianov Ian", "Engineer", "iaian@mailbox.com", "892312312", 30000, 35);
+        empArr[4] = new Employee("Vanov Van", "Engineer", "vvan@mailbox.com", "892312313", 30000, 60);
+        for(Employee emp : empArr)
+            if(emp.age >= 40)
+                emp.ShowInfo();
+    }
+};
+
