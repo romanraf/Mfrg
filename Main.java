@@ -126,6 +126,8 @@ class raceTrack implements Obstacle{
         Lng = Length;
     }
     public void Use(participant p){
+        if(!p.hasFinished())
+            return;
         if(!p.Run(Lng)) {
             System.out.println(p.Info() + " haven't run");
             p.SetFinished(false);
@@ -139,6 +141,8 @@ class Wall implements Obstacle {
         Hght = Height;
     }
     public void Use(participant p){
+        if(!p.hasFinished())
+            return;
         if(!p.Jump(Hght)) {
             System.out.println(p.Info() + " haven't jumped");
             p.SetFinished(false);
