@@ -40,7 +40,7 @@ public class Main {
                     num += Integer.parseInt(str[i][j]);
                 }
                 catch(NumberFormatException){
-                    throw new MyArrawDataException();
+                    throw new MyArrayDataException();
                 }
             }
         }
